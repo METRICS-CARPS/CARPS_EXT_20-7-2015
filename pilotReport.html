@@ -358,8 +358,39 @@ differenceScoreTest0to1</code></pre>
 ##                  1.0585</code></pre>
 <pre class="r"><code>cohensD(value ~ condition, data = diffScoreData0to1, method = &quot;paired&quot;)</code></pre>
 <pre><code>## [1] 1.431387</code></pre>
-<pre class="r"><code># compareValues(reportedValue = 1.00, obtainedValue = 1.45) #incorrect upper CI
-reproCheck(reportedValue = '1.00', obtainedValue = 1.45, valueType = 'ci') #incorrect upper CI</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '5.73', obtainedValue = 5.7255, valueType = 't')</code></pre>
+<pre><code>## [1] &quot;MATCH for t. The reported value (5.73) and the obtained value (5.73) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE          5.73          5.73         t               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '&lt;.001', obtainedValue = 4.014e-05, valueType = 'p', eyeballCheck = TRUE)</code></pre>
+<pre><code>## [1] &quot;MATCH for p. Eyeball comparison only.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE          &lt;NA&gt;            NA      &lt;NA&gt;              NA
+## 2    FALSE         &lt;.001     4.014e-05         p              NA
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH         TRUE</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '1.43', obtainedValue = 1.431387, valueType = 'd')</code></pre>
+<pre><code>## [1] &quot;MATCH for d. The reported value (1.43) and the obtained value (1.43) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE          1.43          1.43         d               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '0.66', obtainedValue = 0.6644522, valueType = 'ci')</code></pre>
+<pre><code>## [1] &quot;MATCH for ci. The reported value (0.66) and the obtained value (0.66) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE          0.66          0.66        ci               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '1.00', obtainedValue = 1.4525478, valueType = 'ci') #incorrect upper CI</code></pre>
 <pre><code>## [1] &quot;MAJOR_ERROR for ci. The reported value (1) and the obtained value (1.45) differed by 45%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
 <pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
 ## 1     TRUE            NA            NA      &lt;NA&gt;              NA
@@ -383,6 +414,46 @@ differenceScoreTest0to2</code></pre>
 ##               0.3743125</code></pre>
 <pre class="r"><code>cohensD(value ~ condition, data = diffScoreData0to2, method = &quot;paired&quot;)</code></pre>
 <pre><code>## [1] 0.8073951</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '3.23', obtainedValue = 3.2296, valueType = 't')</code></pre>
+<pre><code>## [1] &quot;MATCH for t. The reported value (3.23) and the obtained value (3.23) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE          3.23          3.23         t               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '.006', obtainedValue = 0.005613, valueType = 'p')</code></pre>
+<pre><code>## [1] &quot;MATCH for p. The reported value (0.006) and the obtained value (0.006) differed by 0%. Note that the obtained value was rounded to 3 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE         0.006         0.006         p               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '0.81', obtainedValue = 0.8073951, valueType = 'd')</code></pre>
+<pre><code>## [1] &quot;MATCH for d. The reported value (0.81) and the obtained value (0.81) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE          0.81          0.81         d               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '0.13', obtainedValue = 0.1272748, valueType = 'ci')</code></pre>
+<pre><code>## [1] &quot;MATCH for ci. The reported value (0.13) and the obtained value (0.13) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE          0.13          0.13        ci               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '0.62', obtainedValue = 0.6213502, valueType = 'ci')</code></pre>
+<pre><code>## [1] &quot;MATCH for ci. The reported value (0.62) and the obtained value (0.62) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE          0.62          0.62        ci               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
 <pre class="r"><code># &quot;0–3 s: t(15) = 2.47, p = .026, d = 0.62, 95% CI = [0.04, 0.53]&quot;
 differenceScoreTest0to3 &lt;- t.test(value ~ condition, data = diffScoreData0to3, paired = T)
 differenceScoreTest0to3</code></pre>
@@ -399,6 +470,46 @@ differenceScoreTest0to3</code></pre>
 ##                  0.2825</code></pre>
 <pre class="r"><code>cohensD(value ~ condition, data = diffScoreData0to3, method = &quot;paired&quot;)</code></pre>
 <pre><code>## [1] 0.6180206</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '2.47', obtainedValue = 2.4721, valueType = 't')</code></pre>
+<pre><code>## [1] &quot;MATCH for t. The reported value (2.47) and the obtained value (2.47) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE          2.47          2.47         t               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '.026', obtainedValue = 0.02589, valueType = 'p')</code></pre>
+<pre><code>## [1] &quot;MATCH for p. The reported value (0.026) and the obtained value (0.026) differed by 0%. Note that the obtained value was rounded to 3 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE         0.026         0.026         p               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '0.62', obtainedValue = 0.6180206, valueType = 'd')</code></pre>
+<pre><code>## [1] &quot;MATCH for d. The reported value (0.62) and the obtained value (0.62) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE          0.62          0.62         d               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '0.04', obtainedValue = 0.0389262, valueType = 'ci')</code></pre>
+<pre><code>## [1] &quot;MATCH for ci. The reported value (0.04) and the obtained value (0.04) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE          0.04          0.04        ci               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '0.53', obtainedValue = 0.5260738, valueType = 'ci')</code></pre>
+<pre><code>## [1] &quot;MATCH for ci. The reported value (0.53) and the obtained value (0.53) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE          0.53          0.53        ci               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
 </div>
 <div id="response-phase-difference-score-permutation-t-tests-1" class="section level3">
 <h3>5) Response Phase Difference Score Permutation T-Tests</h3>
@@ -430,6 +541,46 @@ trainedDifferenceScoreTest0to1</code></pre>
 ## 0.7010625</code></pre>
 <pre class="r"><code>cohensD(x = diffScoreTrainedData0to1$value)</code></pre>
 <pre><code>## [1] 1.468907</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '5.88', obtainedValue = 5.8756, valueType = 't')</code></pre>
+<pre><code>## [1] &quot;MATCH for t. The reported value (5.88) and the obtained value (5.88) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE          5.88          5.88         t               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '&lt;.001', obtainedValue = 3.049e-05, valueType = 'p', eyeballCheck = TRUE)</code></pre>
+<pre><code>## [1] &quot;MATCH for p. Eyeball comparison only.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE          &lt;NA&gt;            NA      &lt;NA&gt;              NA
+## 2    FALSE         &lt;.001     3.049e-05         p              NA
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH         TRUE</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '1.47', obtainedValue = 1.468907, valueType = 'd')</code></pre>
+<pre><code>## [1] &quot;MATCH for d. The reported value (1.47) and the obtained value (1.47) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE          1.47          1.47         d               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '0.45', obtainedValue = 0.4467443, valueType = 'ci')</code></pre>
+<pre><code>## [1] &quot;MATCH for ci. The reported value (0.45) and the obtained value (0.45) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE          0.45          0.45        ci               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '0.96', obtainedValue = 0.9553807, valueType = 'ci')</code></pre>
+<pre><code>## [1] &quot;MATCH for ci. The reported value (0.96) and the obtained value (0.96) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE          0.96          0.96        ci               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
 <pre class="r"><code># &quot;0–2 s: t(15) = 2.59, p = .021, d = 0.65, 95% CI = [0.04, 0.45]&quot;
 trainedDifferenceScoreTest0to2 &lt;- t.test(diffScoreTrainedData0to2$value)
 trainedDifferenceScoreTest0to2</code></pre>
@@ -446,6 +597,46 @@ trainedDifferenceScoreTest0to2</code></pre>
 ## 0.2441875</code></pre>
 <pre class="r"><code>cohensD(x = diffScoreTrainedData0to2$value)</code></pre>
 <pre><code>## [1] 0.6469889</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '2.59', obtainedValue = 2.588, valueType = 't')</code></pre>
+<pre><code>## [1] &quot;MATCH for t. The reported value (2.59) and the obtained value (2.59) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE          2.59          2.59         t               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '.021', obtainedValue = 0.02059, valueType = 'p')</code></pre>
+<pre><code>## [1] &quot;MATCH for p. The reported value (0.021) and the obtained value (0.021) differed by 0%. Note that the obtained value was rounded to 3 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE         0.021         0.021         p               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '0.65', obtainedValue = 0.6469889, valueType = 'd')</code></pre>
+<pre><code>## [1] &quot;MATCH for d. The reported value (0.65) and the obtained value (0.65) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE          0.65          0.65         d               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '0.04', obtainedValue = 0.0430738, valueType = 'ci')</code></pre>
+<pre><code>## [1] &quot;MATCH for ci. The reported value (0.04) and the obtained value (0.04) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE          0.04          0.04        ci               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '0.45', obtainedValue = 0.4453012, valueType = 'ci')</code></pre>
+<pre><code>## [1] &quot;MATCH for ci. The reported value (0.45) and the obtained value (0.45) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE          0.45          0.45        ci               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
 <pre class="r"><code># &quot;0–3 s: t(15) = 2.84, p = .012, d = 0.71, 95% CI = [0.06, 0.43]&quot;
 trainedDifferenceScoreTest0to3 &lt;- t.test(diffScoreTrainedData0to3$value)
 trainedDifferenceScoreTest0to3</code></pre>
@@ -463,7 +654,39 @@ trainedDifferenceScoreTest0to3</code></pre>
 <pre class="r"><code>cohensD(x = diffScoreTrainedData0to3$value)</code></pre>
 <pre><code>## [1] 0.7096979</code></pre>
 <pre class="r"><code># compareValues(reportedValue = 0.43, obtainedValue = 0.439) #incorrect upper CI
-reproCheck(reportedValue = '0.43', obtainedValue = 0.439, valueType = 'ci') #incorrect upper CI</code></pre>
+reproCheck(reportedValue = '2.84', obtainedValue = 2.8388, valueType = 't')</code></pre>
+<pre><code>## [1] &quot;MATCH for t. The reported value (2.84) and the obtained value (2.84) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE          2.84          2.84         t               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '.012', obtainedValue = 0.01245, valueType = 'p')</code></pre>
+<pre><code>## [1] &quot;MATCH for p. The reported value (0.012) and the obtained value (0.012) differed by 0%. Note that the obtained value was rounded to 3 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE         0.012         0.012         p               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '0.71', obtainedValue = 0.7096979, valueType = 'd')</code></pre>
+<pre><code>## [1] &quot;MATCH for d. The reported value (0.71) and the obtained value (0.71) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE          0.71          0.71         d               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '0.06', obtainedValue = 0.06254171, valueType = 'ci')</code></pre>
+<pre><code>## [1] &quot;MATCH for ci. The reported value (0.06) and the obtained value (0.06) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE          0.06          0.06        ci               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '0.43', obtainedValue = 0.43945829, valueType = 'ci') #incorrect upper CI</code></pre>
 <pre><code>## [1] &quot;MINOR_ERROR for ci. The reported value (0.43) and the obtained value (0.44) differed by 2.33%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
 <pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
 ## 1     TRUE            NA            NA      &lt;NA&gt;              NA
@@ -493,6 +716,46 @@ untrainedDifferenceScoreTest0to1</code></pre>
 ## -0.3574375</code></pre>
 <pre class="r"><code>cohensD(x = diffScoreUntrainedData0to1$value)</code></pre>
 <pre><code>## [1] 0.4776539</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '1.91', obtainedValue = -1.9106, valueType = 't')</code></pre>
+<pre><code>## [1] &quot;MAJOR_ERROR for t. The reported value (1.91) and the obtained value (-1.91) differed by 200%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE          1.91         -1.91         t             200
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2       MAJOR_ERROR           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '.075', obtainedValue = 0.07536, valueType = 'p')</code></pre>
+<pre><code>## [1] &quot;MATCH for p. The reported value (0.075) and the obtained value (0.075) differed by 0%. Note that the obtained value was rounded to 3 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE         0.075         0.075         p               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '0.48', obtainedValue = 0.4776539, valueType = 'd')</code></pre>
+<pre><code>## [1] &quot;MATCH for d. The reported value (0.48) and the obtained value (0.48) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE          0.48          0.48         d               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '-0.76', obtainedValue = -0.7561886, valueType = 'ci')</code></pre>
+<pre><code>## [1] &quot;MATCH for ci. The reported value (-0.76) and the obtained value (-0.76) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE         -0.76         -0.76        ci               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '0.04', obtainedValue = 0.0413136, valueType = 'ci')</code></pre>
+<pre><code>## [1] &quot;MATCH for ci. The reported value (0.04) and the obtained value (0.04) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE          0.04          0.04        ci               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
 <pre class="r"><code># &quot;0–2 s: t(15) = 0.93, p = .368, d = 0.23, 95% CI = [–0.43, 0.17]&quot;
 untrainedDifferenceScoreTest0to2 &lt;- t.test(diffScoreUntrainedData0to2$value)
 untrainedDifferenceScoreTest0to2</code></pre>
@@ -509,6 +772,46 @@ untrainedDifferenceScoreTest0to2</code></pre>
 ## -0.130125</code></pre>
 <pre class="r"><code>cohensD(x = diffScoreUntrainedData0to2$value)</code></pre>
 <pre><code>## [1] 0.2318419</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '0.93', obtainedValue = -0.92737, valueType = 't') #missing negative sign</code></pre>
+<pre><code>## [1] &quot;MAJOR_ERROR for t. The reported value (0.93) and the obtained value (-0.93) differed by 200%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE          0.93         -0.93         t             200
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2       MAJOR_ERROR           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '.368', obtainedValue = 0.3684, valueType = 'p')</code></pre>
+<pre><code>## [1] &quot;MATCH for p. The reported value (0.368) and the obtained value (0.368) differed by 0%. Note that the obtained value was rounded to 3 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE         0.368         0.368         p               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '0.23', obtainedValue = 0.2318419, valueType = 'd')</code></pre>
+<pre><code>## [1] &quot;MATCH for d. The reported value (0.23) and the obtained value (0.23) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE          0.23          0.23         d               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '-0.43', obtainedValue = -0.4292026, valueType = 'ci')</code></pre>
+<pre><code>## [1] &quot;MATCH for ci. The reported value (-0.43) and the obtained value (-0.43) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE         -0.43         -0.43        ci               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '0.17', obtainedValue = 0.1689526, valueType = 'ci')</code></pre>
+<pre><code>## [1] &quot;MATCH for ci. The reported value (0.17) and the obtained value (0.17) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE          0.17          0.17        ci               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
 <pre class="r"><code># &quot;0–3 s: t(15) = 0.29, p = .774, d = 0.07, 95% CI = [–0.26, 0.20]&quot;
 untrainedDifferenceScoreTest0to3 &lt;- t.test(diffScoreUntrainedData0to3$value)
 untrainedDifferenceScoreTest0to3</code></pre>
@@ -525,6 +828,46 @@ untrainedDifferenceScoreTest0to3</code></pre>
 ##   -0.0315</code></pre>
 <pre class="r"><code>cohensD(x = diffScoreUntrainedData0to3$value)</code></pre>
 <pre><code>## [1] 0.07313838</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '0.29', obtainedValue = -0.29255, valueType = 't') #missing negative sign</code></pre>
+<pre><code>## [1] &quot;MAJOR_ERROR for t. The reported value (0.29) and the obtained value (-0.29) differed by 200%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE          0.29         -0.29         t             200
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2       MAJOR_ERROR           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '.774', obtainedValue = 0.7739, valueType = 'p')</code></pre>
+<pre><code>## [1] &quot;MATCH for p. The reported value (0.774) and the obtained value (0.774) differed by 0%. Note that the obtained value was rounded to 3 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE         0.774         0.774         p               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '0.07', obtainedValue = 0.07313838, valueType = 'd')</code></pre>
+<pre><code>## [1] &quot;MATCH for d. The reported value (0.07) and the obtained value (0.07) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE          0.07          0.07         d               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '-0.26', obtainedValue = -0.2609987, valueType = 'ci')</code></pre>
+<pre><code>## [1] &quot;MATCH for ci. The reported value (-0.26) and the obtained value (-0.26) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE         -0.26         -0.26        ci               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
+<pre class="r"><code>reproCheck(reportedValue = '0.20', obtainedValue = 0.1979987, valueType = 'ci')</code></pre>
+<pre><code>## [1] &quot;MATCH for ci. The reported value (0.2) and the obtained value (0.2) differed by 0%. Note that the obtained value was rounded to 2 decimal places to match the reported value.&quot;</code></pre>
+<pre><code>##   dummyRow reportedValue obtainedValue valueType percentageError
+## 1     TRUE            NA            NA      &lt;NA&gt;              NA
+## 2    FALSE           0.2           0.2        ci               0
+##   comparisonOutcome eyeballCheck
+## 1              &lt;NA&gt;           NA
+## 2             MATCH           NA</code></pre>
 </div>
 </div>
 </div>
@@ -561,7 +904,7 @@ untrainedDifferenceScoreTest0to3</code></pre>
 </div>
 <div id="untrained-condition-difference-score-one-sample-t-test-2" class="section level3">
 <h3>7) Untrained Condition Difference Score One Sample T-Test</h3>
-<p>I was able to reproduce the reported values from all of these tests.</p>
+<p>The t-values for all three time intervals were reported as positive when they should have been negative. However, the written explanation of this analysis does reflect these negative values (so perhaps we shoud nto interpret them as incorrect).</p>
 <p>[PILOT/COPILOT ENTER RELEVANT INFORMATION BELOW]</p>
 <pre class="r"><code>Author_Assistance = FALSE # was author assistance provided? (if so, enter TRUE)
 
@@ -583,14 +926,6 @@ locus_data_resolved &lt;- NA # how many discrete issues did you encounter that r
 locus_unidentified_resolved &lt;- NA # how many discrete issues were there for which you could not identify the cause
 
 Affects_Conclusion &lt;- FALSE # Do any reproducibility issues encounter appear to affect the conclusions made in the original article? TRUE, FALSE, or NA. This is a subjective judgement, but you should taking into account multiple factors, such as the presence/absence of decision errors, the number of target outcomes that could not be reproduced, the type of outcomes that could or could not be reproduced, the difference in magnitude of effect sizes, and the predictions of the specific hypothesis under scrutiny.</code></pre>
-<pre class="r"><code># Function not found - commented out
-# carpsReport(Report_Type = reportType,
-#           Article_ID = articleID, 
-#           Insufficient_Information_Errors = 4,
-#           Decision_Errors = 0,
-#           Major_Numerical_Errors = 1,
-#           Time_to_Complete = 120, 
-#           Author_Assistance = FALSE)</code></pre>
 <p>[PILOT/COPILOT DO NOT EDIT THE CODE CHUNK BELOW]</p>
 <pre class="r"><code>reportObject &lt;- reportObject %&gt;%
   filter(dummyRow == FALSE) %&gt;% # remove the dummy row
@@ -640,7 +975,7 @@ if(reportType == &quot;final&quot;){
 ##  collate  en_US.UTF-8                 
 ##  ctype    en_US.UTF-8                 
 ##  tz       Asia/Seoul                  
-##  date     2018-11-02                  
+##  date     2018-11-03                  
 ## 
 ## ─ Packages ──────────────────────────────────────────────────────────────
 ##  package       * version  date       lib

@@ -159,18 +159,31 @@ diffScoreUntrainedData0to1 <- condData[(condData$item == 'DS' & condData$FrameCo
 differenceScoreTest0to1 <- t.test(value ~ condition, data = diffScoreData0to1, paired = T)
 differenceScoreTest0to1
 cohensD(value ~ condition, data = diffScoreData0to1, method = "paired")
-# compareValues(reportedValue = 1.00, obtainedValue = 1.45) #incorrect upper CI
-reproCheck(reportedValue = '1.00', obtainedValue = 1.45, valueType = 'ci') #incorrect upper CI
+reproCheck(reportedValue = '5.73', obtainedValue = 5.7255, valueType = 't')
+reproCheck(reportedValue = '<.001', obtainedValue = 4.014e-05, valueType = 'p', eyeballCheck = TRUE)
+reproCheck(reportedValue = '1.43', obtainedValue = 1.431387, valueType = 'd')
+reproCheck(reportedValue = '0.66', obtainedValue = 0.6644522, valueType = 'ci')
+reproCheck(reportedValue = '1.00', obtainedValue = 1.4525478, valueType = 'ci') #incorrect upper CI
 
 # "0–2 s: t(15) = 3.23, p = .006, d = 0.81, 95% CI = [0.13, 0.62]"
 differenceScoreTest0to2 <- t.test(value ~ condition, data = diffScoreData0to2, paired = T)
 differenceScoreTest0to2
 cohensD(value ~ condition, data = diffScoreData0to2, method = "paired")
+reproCheck(reportedValue = '3.23', obtainedValue = 3.2296, valueType = 't')
+reproCheck(reportedValue = '.006', obtainedValue = 0.005613, valueType = 'p')
+reproCheck(reportedValue = '0.81', obtainedValue = 0.8073951, valueType = 'd')
+reproCheck(reportedValue = '0.13', obtainedValue = 0.1272748, valueType = 'ci')
+reproCheck(reportedValue = '0.62', obtainedValue = 0.6213502, valueType = 'ci')
 
 # "0–3 s: t(15) = 2.47, p = .026, d = 0.62, 95% CI = [0.04, 0.53]"
 differenceScoreTest0to3 <- t.test(value ~ condition, data = diffScoreData0to3, paired = T)
 differenceScoreTest0to3
 cohensD(value ~ condition, data = diffScoreData0to3, method = "paired")
+reproCheck(reportedValue = '2.47', obtainedValue = 2.4721, valueType = 't')
+reproCheck(reportedValue = '.026', obtainedValue = 0.02589, valueType = 'p')
+reproCheck(reportedValue = '0.62', obtainedValue = 0.6180206, valueType = 'd')
+reproCheck(reportedValue = '0.04', obtainedValue = 0.0389262, valueType = 'ci')
+reproCheck(reportedValue = '0.53', obtainedValue = 0.5260738, valueType = 'ci')
 ```
 
 ###5) Response Phase Difference Score Permutation T-Tests
@@ -190,18 +203,32 @@ cohensD(value ~ condition, data = diffScoreData0to3, method = "paired")
 trainedDifferenceScoreTest0to1 <- t.test(diffScoreTrainedData0to1$value)
 trainedDifferenceScoreTest0to1
 cohensD(x = diffScoreTrainedData0to1$value)
+reproCheck(reportedValue = '5.88', obtainedValue = 5.8756, valueType = 't')
+reproCheck(reportedValue = '<.001', obtainedValue = 3.049e-05, valueType = 'p', eyeballCheck = TRUE)
+reproCheck(reportedValue = '1.47', obtainedValue = 1.468907, valueType = 'd')
+reproCheck(reportedValue = '0.45', obtainedValue = 0.4467443, valueType = 'ci')
+reproCheck(reportedValue = '0.96', obtainedValue = 0.9553807, valueType = 'ci')
 
 # "0–2 s: t(15) = 2.59, p = .021, d = 0.65, 95% CI = [0.04, 0.45]"
 trainedDifferenceScoreTest0to2 <- t.test(diffScoreTrainedData0to2$value)
 trainedDifferenceScoreTest0to2
 cohensD(x = diffScoreTrainedData0to2$value)
+reproCheck(reportedValue = '2.59', obtainedValue = 2.588, valueType = 't')
+reproCheck(reportedValue = '.021', obtainedValue = 0.02059, valueType = 'p')
+reproCheck(reportedValue = '0.65', obtainedValue = 0.6469889, valueType = 'd')
+reproCheck(reportedValue = '0.04', obtainedValue = 0.0430738, valueType = 'ci')
+reproCheck(reportedValue = '0.45', obtainedValue = 0.4453012, valueType = 'ci')
 
 # "0–3 s: t(15) = 2.84, p = .012, d = 0.71, 95% CI = [0.06, 0.43]"
 trainedDifferenceScoreTest0to3 <- t.test(diffScoreTrainedData0to3$value)
 trainedDifferenceScoreTest0to3
 cohensD(x = diffScoreTrainedData0to3$value)
 # compareValues(reportedValue = 0.43, obtainedValue = 0.439) #incorrect upper CI
-reproCheck(reportedValue = '0.43', obtainedValue = 0.439, valueType = 'ci') #incorrect upper CI
+reproCheck(reportedValue = '2.84', obtainedValue = 2.8388, valueType = 't')
+reproCheck(reportedValue = '.012', obtainedValue = 0.01245, valueType = 'p')
+reproCheck(reportedValue = '0.71', obtainedValue = 0.7096979, valueType = 'd')
+reproCheck(reportedValue = '0.06', obtainedValue = 0.06254171, valueType = 'ci')
+reproCheck(reportedValue = '0.43', obtainedValue = 0.43945829, valueType = 'ci') #incorrect upper CI
 ```
 
 ###7) Untrained Condition Difference Score One Sample T-Test
@@ -212,16 +239,31 @@ reproCheck(reportedValue = '0.43', obtainedValue = 0.439, valueType = 'ci') #inc
 untrainedDifferenceScoreTest0to1 <- t.test(diffScoreUntrainedData0to1$value)
 untrainedDifferenceScoreTest0to1
 cohensD(x = diffScoreUntrainedData0to1$value)
+reproCheck(reportedValue = '1.91', obtainedValue = -1.9106, valueType = 't')
+reproCheck(reportedValue = '.075', obtainedValue = 0.07536, valueType = 'p')
+reproCheck(reportedValue = '0.48', obtainedValue = 0.4776539, valueType = 'd')
+reproCheck(reportedValue = '-0.76', obtainedValue = -0.7561886, valueType = 'ci')
+reproCheck(reportedValue = '0.04', obtainedValue = 0.0413136, valueType = 'ci')
 
 # "0–2 s: t(15) = 0.93, p = .368, d = 0.23, 95% CI = [–0.43, 0.17]"
 untrainedDifferenceScoreTest0to2 <- t.test(diffScoreUntrainedData0to2$value)
 untrainedDifferenceScoreTest0to2
 cohensD(x = diffScoreUntrainedData0to2$value)
+reproCheck(reportedValue = '0.93', obtainedValue = -0.92737, valueType = 't') #missing negative sign
+reproCheck(reportedValue = '.368', obtainedValue = 0.3684, valueType = 'p')
+reproCheck(reportedValue = '0.23', obtainedValue = 0.2318419, valueType = 'd')
+reproCheck(reportedValue = '-0.43', obtainedValue = -0.4292026, valueType = 'ci')
+reproCheck(reportedValue = '0.17', obtainedValue = 0.1689526, valueType = 'ci')
 
 # "0–3 s: t(15) = 0.29, p = .774, d = 0.07, 95% CI = [–0.26, 0.20]"
 untrainedDifferenceScoreTest0to3 <- t.test(diffScoreUntrainedData0to3$value)
 untrainedDifferenceScoreTest0to3
 cohensD(x = diffScoreUntrainedData0to3$value)
+reproCheck(reportedValue = '0.29', obtainedValue = -0.29255, valueType = 't') #missing negative sign
+reproCheck(reportedValue = '.774', obtainedValue = 0.7739, valueType = 'p')
+reproCheck(reportedValue = '0.07', obtainedValue = 0.07313838, valueType = 'd')
+reproCheck(reportedValue = '-0.26', obtainedValue = -0.2609987, valueType = 'ci')
+reproCheck(reportedValue = '0.20', obtainedValue = 0.1979987, valueType = 'ci')
 ```
 
 # Step 5: Conclusion
@@ -254,7 +296,7 @@ I did not have enough information to reproduce these tests. I do not know where 
 Similarly to the reponse phase interval difference score t-tests, the results from these tests largely matched those of the reported data. However, the upper confidence interval for the 0-3s interval was rounded incorrectly in the original reported data; this error is likely the result of a typo.
 
 ###7) Untrained Condition Difference Score One Sample T-Test
-I was able to reproduce the reported values from all of these tests.
+The t-values for all three time intervals were reported as positive when they should have been negative. However, the written explanation of this analysis does reflect these negative values (so perhaps we shoud nto interpret them as incorrect).
 
   
 [PILOT/COPILOT ENTER RELEVANT INFORMATION BELOW]
@@ -280,17 +322,6 @@ locus_data_resolved <- NA # how many discrete issues did you encounter that rela
 locus_unidentified_resolved <- NA # how many discrete issues were there for which you could not identify the cause
 
 Affects_Conclusion <- FALSE # Do any reproducibility issues encounter appear to affect the conclusions made in the original article? TRUE, FALSE, or NA. This is a subjective judgement, but you should taking into account multiple factors, such as the presence/absence of decision errors, the number of target outcomes that could not be reproduced, the type of outcomes that could or could not be reproduced, the difference in magnitude of effect sizes, and the predictions of the specific hypothesis under scrutiny.
-```
-
-```{r}
-# Function not found - commented out
-# carpsReport(Report_Type = reportType,
-#           Article_ID = articleID, 
-#           Insufficient_Information_Errors = 4,
-#           Decision_Errors = 0,
-#           Major_Numerical_Errors = 1,
-#           Time_to_Complete = 120, 
-#           Author_Assistance = FALSE)
 ```
 
 [PILOT/COPILOT DO NOT EDIT THE CODE CHUNK BELOW]
