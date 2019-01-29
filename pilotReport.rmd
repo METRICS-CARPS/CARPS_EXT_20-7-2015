@@ -1,0 +1,370 @@
+---
+title: "CARPS Reproducibility Report"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+[PILOT/COPILOT - TEXT IN SQUARE BRACKETS IS HERE FOR GUIDANCE. COPILOT PLEASE DELETE BEFORE KNITTING THE FINAL REPORT]
+
+# Report Details
+
+[PILOT/COPILOT ENTER RELEVANT REPORT DETAILS HERE]
+
+```{r}
+articleID <- "CARPS_EXT_20_7_2015" # insert the article ID code here e.g., "10-3-2015_PS"
+reportType <- 'pilot' # specify whether this is the 'pilot' report or 'final' report
+pilotNames <- "Griffin Dietz" # insert the pilot's name here e.g., "Tom Hardwicke".  If there are multiple cpilots enter both names in a character string e.g., "Tom Hardwicke, Bob Dylan"
+copilotNames <- NA # # insert the co-pilot's name here e.g., "Michael Frank". If there are multiple co-pilots enter both names in a character string e.g., "Tom Hardwicke, Bob Dylan"
+pilotTTC <- 180 # insert the pilot's estimated time to complete (in minutes, fine to approximate) e.g., 120
+copilotTTC <- NA # insert the co-pilot's estimated time to complete (in minutes, fine to approximate) e.g., 120
+pilotStartDate <- "10/31/18" # insert the pilot's start date in US format e.g., as.Date("01/25/18", format = "%m/%d/%y")
+copilotStartDate <- NA # insert the co-pilot's start date in US format e.g., as.Date("01/25/18", format = "%m/%d/%y")
+completionDate <- NA # copilot insert the date of final report completion (after any necessary rounds of author assistance) in US format e.g., as.Date("01/25/18", format = "%m/%d/%y")
+```
+
+------
+
+#### Methods summary: 
+The authors presented children with a computer animation of one object chasing another. The objects moved for 5 seconds, followed by a 4.2 second pause. In the training trials, when the scene paused, a downward pointing index finger appeared above the chaser accompanied by auditory stimuli naming the chaser object with a novel word. In the test trials, when the scene paused, a bulls-eye appeard between the two objects and the infant was asked, "Where is the [novel name of chaser object]?". This was followed by a 3 second response phase, in which eye tracking data was gathed from the infant. Children were alternatingly presented with trials that presented the trained or untrained label.
+
+The authors calculated average difference scores ranging from -1 (looking only at the target) to 1 (looking only at the chaser) for each infant in three time ranges (0–1 s, 0–2 s, and 0–3 s) with the formula: [(time looking at unlabeled object) - (time looking at chaser object)] / (time looking ta both objects). They compared these values across conditions using two-tailed paired t-tests. They also compared these difference scores to 0 (no preference for either object) using one-sample t-tests. In both cases authors report Cohen's d for the effect size.
+
+To ensure the effects are not the result of the specifically selected timepoint, the authors also preformed a prmutation-based t-test.
+
+------
+
+#### Target outcomes: 
+The average number of valid training trials was 4.81 (see Table S1 in the Supplemental Material). We analyzed the total looking times in different phases of the test trials.
+We found no significant difference between the trainedword condition and the untrained-word condition during either the 5-s first exposure phase, t(15) = 1.72, p = .106, d = 0.43, 95% confidence interval (CI) for the lookingtime difference = [–0.05, 0.46], or the 3-s response phase, t(15) = 1.52, p = .149, d = 0.38, 95% CI = [–0.04, 0.24]. Figure 2a depicts the time course of changing preference during the response phase. As expected, during the test trials, the infants looked longer at the object that had acted as the chaser when they heard the trained word than when they heard the untrained word. This was true for all three predefined time ranges within the response phase—0–1 s: t(15) = 5.73, p < .001, d = 1.43, 95% CI = [0.66, 1.00]; 0–2 s: t(15) = 3.23, p = .006, d = 0.81, 95% CI = [0.13, 0.62]; 0–3 s: t(15) = 2.47, p = .026, d = 0.62, 95% CI = [0.04, 0.53] (see Fig. 2a). These effects remained significant when looking-time differences during the first exposure phase were included as covariates in the analyses, p < .001, p = .018, and p = .037, respectively, for the three time ranges. Such differences were not due to chance: Using permutation-based t tests, we found that the difference scores in the trained-word condition and the untrained-word condition were significantly different from 0.33 to 2.06 s (ps < .050).
+In further analyses, we found that the difference scores for all three time ranges were significantly above the chance level in the trained-word condition—0–1 s: t(15) = 5.88, p < .001, d = 1.47, 95% CI = [0.45, 0.96]; 0–2 s: t(15) = 2.59, p = .021, d = 0.65, 95% CI = [0.04, 0.45]; 0–3 s: t(15) = 2.84, p = .012, d = 0.71, 95% CI = [0.06, 0.43]. This finding suggests that the infants identified the chaser as the referent of the trained word. Although the same analysis did not reveal a significant difference from zero in the untrained-word condition, an initial tendency to look longer at the target was observed—0–1 s: t(15) = 1.91, p = .075, d = 0.48, 95% CI = [–0.76, 0.04]; 0–2 s: t(15) = 0.93, p = .368, d = 0.23, 95% CI = [–0.43, 0.17]; 0–3 s: t(15) = 0.29, p = .774, d = 0.07, 95% CI = [–0.26, 0.20].
+
+------
+
+[PILOT/COPILOT DO NOT CHANGE THE CODE IN THE CHUNK BELOW]  
+
+```{r global_options, include=FALSE}
+# sets up some formatting options for the R Markdown document
+knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE)
+```
+
+# Step 1: Load packages and prepare report object
+
+[PILOT/COPILOT Some useful packages are being loaded below. You can add any additional ones you might need too.]
+
+```{r}
+# load packages
+library(tidyverse) # for data munging
+library(knitr) # for kable table formating
+library(haven) # import and export 'SPSS', 'Stata' and 'SAS' Files
+library(readxl) # import excel files
+library(CARPSreports) # custom report functions
+library(RVAideMemoire) # for permutation t-test
+library(lsr)
+```
+
+[PILOT/COPILOT DO NOT MAKE CHANGES TO THE CODE CHUNK BELOW]
+
+```{r}
+# Prepare report object. This will be updated automatically by the reproCheck function each time values are compared
+reportObject <- data.frame(dummyRow = TRUE, reportedValue = NA, obtainedValue = NA, valueType = NA, percentageError = NA, comparisonOutcome = NA, eyeballCheck = NA)
+```
+
+# Step 2: Load data
+
+```{r}
+data <- read_excel("data/Experiment1.xlsx")
+```
+
+# Step 3: Tidy data
+
+```{r}
+condData <- data %>%
+  gather(item, value, contains("-")) %>%
+  mutate(condition = (ifelse(grepl("Trained", item), "Trained", "Untrained")),
+         item = sub(".*-", "", item))
+
+```
+
+# Step 4: Run analysis
+
+## Pre-processing
+
+###2) Response Phase Looking Time
+Generating data frame that include total looking time (at either Chaser or Chasee) in ms by child and condition.
+```{r}
+totalLookingTime <- condData[(condData$item != 'DS'),] %>%
+  group_by(SubNO, condition) %>%
+  summarise(time = (sum(value) * 16.67))
+```
+
+###3) Response Phase Interval Difference Score T-Tests
+Difference scores for each of the intervals in the response phase for both conditions.
+```{r}
+diffScoreData0to3 <- condData[(condData$item == 'DS' & condData$FrameCount == 180),]
+diffScoreData0to2 <- condData[(condData$item == 'DS' & condData$FrameCount == 120),]
+diffScoreData0to1 <- condData[(condData$item == 'DS' & condData$FrameCount == 60),]
+```
+
+###5) Response Phase Difference Score Permutation T-Tests
+Difference scores for the permutation test from the specified time range and from all frames (commented out, but present in case the time range came from test itself rather than preprocessing).
+```{r}
+###5) Response Phase Difference Score Permutation T-Tests
+#if timeframe reported are from preprocessing
+diffScoresData <- condData[(condData$item == 'DS' & condData$FrameCount >= (330 / 16.67) & condData$FrameCount <= (2060 / 16.67)),]
+#if time frames reported are from test results
+# diffScoresData <- condData[(condData$item == 'DS'),] 
+diffScoresDataTrained <- condData[(condData$item == 'DS' & condData$condition == 'Trained'),]
+diffScoresDataUntrained <- condData[(condData$item == 'DS' & condData$condition == 'Untrained'),]
+```
+
+###6) Trained Condition Difference Score One Sample T-Test
+Difference scores for each of the intervals in the response phase for the trained word conditions.
+```{r}
+diffScoreTrainedData0to3 <- condData[(condData$item == 'DS' & condData$FrameCount == 180 & condData$condition == "Trained"),]
+diffScoreTrainedData0to2 <- condData[(condData$item == 'DS' & condData$FrameCount == 120 & condData$condition == "Trained"),]
+diffScoreTrainedData0to1 <- condData[(condData$item == 'DS' & condData$FrameCount == 60 & condData$condition == "Trained"),]
+```
+
+###7) Untrained Condition Difference Score One Sample T-Test
+Difference scores for each of the intervals in the response phase for the untrained word conditions.
+```{r}
+diffScoreUntrainedData0to3 <- condData[(condData$item == 'DS' & condData$FrameCount == 180 & condData$condition == "Untrained"),]
+diffScoreUntrainedData0to2 <- condData[(condData$item == 'DS' & condData$FrameCount == 120 & condData$condition == "Untrained"),]
+diffScoreUntrainedData0to1 <- condData[(condData$item == 'DS' & condData$FrameCount == 60 & condData$condition == "Untrained"),]
+```
+
+## Descriptive statistics
+```{r}
+```
+
+## Inferential statistics
+###2) Response Phase Looking Time
+> We found no significant difference between the trainedword condition and the untrained-word condition during either the 5-s first exposure phase, t(15) = 1.72, p = .106, d = 0.43, 95% confidence interval (CI) for the lookingtime difference = [–0.05, 0.46], or the 3-s response phase, t(15) = 1.52, p = .149, d = 0.38, 95% CI = [–0.04, 0.24]. (from Yin & Csibra p. 5)
+
+```{r}
+#Commented out because insufficient info
+# t(15) = 1.52, p = .149, d = 0.38, 95% CI = [–0.04, 0.24]
+# lookingTimeTest <- t.test(time ~ condition, data=totalLookingTime)
+# lookingTimeTest
+# cohensD(time ~ condition, data = totalLookingTime, method = "paired")
+```
+
+###3) Response Phase Interval Difference Score T-Tests
+> The infants looked longer at the object that had acted as the chaser when they heard the trained word than when they heard the untrained word. This was true for all three predefined time ranges within the response phase—0–1 s: t(15) = 5.73, p < .001, d = 1.43, 95% CI = [0.66, 1.00]; 0–2 s: t(15) = 3.23, p = .006, d = 0.81, 95% CI = [0.13, 0.62]; 0–3 s: t(15) = 2.47, p = .026, d = 0.62, 95% CI = [0.04, 0.53] (see Fig. 2a). (from Yin & Csibra p. 5)
+
+```{r}
+# "0–1 s: t(15) = 5.73, p < .001, d = 1.43, 95% CI = [0.66, 1.00]"
+differenceScoreTest0to1 <- t.test(value ~ condition, data = diffScoreData0to1, paired = T)
+differenceScoreTest0to1
+cohensD(value ~ condition, data = diffScoreData0to1, method = "paired")
+reproCheck(reportedValue = '5.73', obtainedValue = 5.7255, valueType = 't')
+reproCheck(reportedValue = '<.001', obtainedValue = 4.014e-05, valueType = 'p', eyeballCheck = TRUE)
+reproCheck(reportedValue = '1.43', obtainedValue = 1.431387, valueType = 'd')
+reproCheck(reportedValue = '0.66', obtainedValue = 0.6644522, valueType = 'ci')
+reproCheck(reportedValue = '1.00', obtainedValue = 1.4525478, valueType = 'ci') #incorrect upper CI
+
+# "0–2 s: t(15) = 3.23, p = .006, d = 0.81, 95% CI = [0.13, 0.62]"
+differenceScoreTest0to2 <- t.test(value ~ condition, data = diffScoreData0to2, paired = T)
+differenceScoreTest0to2
+cohensD(value ~ condition, data = diffScoreData0to2, method = "paired")
+reproCheck(reportedValue = '3.23', obtainedValue = 3.2296, valueType = 't')
+reproCheck(reportedValue = '.006', obtainedValue = 0.005613, valueType = 'p')
+reproCheck(reportedValue = '0.81', obtainedValue = 0.8073951, valueType = 'd')
+reproCheck(reportedValue = '0.13', obtainedValue = 0.1272748, valueType = 'ci')
+reproCheck(reportedValue = '0.62', obtainedValue = 0.6213502, valueType = 'ci')
+
+# "0–3 s: t(15) = 2.47, p = .026, d = 0.62, 95% CI = [0.04, 0.53]"
+differenceScoreTest0to3 <- t.test(value ~ condition, data = diffScoreData0to3, paired = T)
+differenceScoreTest0to3
+cohensD(value ~ condition, data = diffScoreData0to3, method = "paired")
+reproCheck(reportedValue = '2.47', obtainedValue = 2.4721, valueType = 't')
+reproCheck(reportedValue = '.026', obtainedValue = 0.02589, valueType = 'p')
+reproCheck(reportedValue = '0.62', obtainedValue = 0.6180206, valueType = 'd')
+reproCheck(reportedValue = '0.04', obtainedValue = 0.0389262, valueType = 'ci')
+reproCheck(reportedValue = '0.53', obtainedValue = 0.5260738, valueType = 'ci')
+```
+
+###5) Response Phase Difference Score Permutation T-Tests
+> Using permutation-based t tests, we found that the difference scores in the trained-word condition and the untrained-word condition were significantly different from 0.33 to 2.06 s (ps < .050). (from Yin & Csibra p. 5)
+
+```{r}
+# Commented out because takes several minutes to run
+# permTest2 <- RVAideMemoire::perm.t.test(formula = value ~ condition, data = diffScoresData, nperm = 50000, paired = T)
+# permTest2
+```
+
+###6) Trained Condition Difference Score One Sample T-Test
+> We found that the difference scores for all three time ranges were significantly above the chance level in the trained-word condition—0–1 s: t(15) = 5.88, p < .001, d = 1.47, 95% CI = [0.45, 0.96]; 0–2 s: t(15) = 2.59, p = .021, d = 0.65, 95% CI = [0.04, 0.45]; 0–3 s: t(15) = 2.84, p = .012, d = 0.71, 95% CI = [0.06, 0.43]. (from Yin & Csibra p. 5)
+
+```{r}
+# "0–1 s: t(15) = 5.88, p < .001, d = 1.47, 95% CI = [0.45, 0.96]"
+trainedDifferenceScoreTest0to1 <- t.test(diffScoreTrainedData0to1$value)
+trainedDifferenceScoreTest0to1
+cohensD(x = diffScoreTrainedData0to1$value)
+reproCheck(reportedValue = '5.88', obtainedValue = 5.8756, valueType = 't')
+reproCheck(reportedValue = '<.001', obtainedValue = 3.049e-05, valueType = 'p', eyeballCheck = TRUE)
+reproCheck(reportedValue = '1.47', obtainedValue = 1.468907, valueType = 'd')
+reproCheck(reportedValue = '0.45', obtainedValue = 0.4467443, valueType = 'ci')
+reproCheck(reportedValue = '0.96', obtainedValue = 0.9553807, valueType = 'ci')
+
+# "0–2 s: t(15) = 2.59, p = .021, d = 0.65, 95% CI = [0.04, 0.45]"
+trainedDifferenceScoreTest0to2 <- t.test(diffScoreTrainedData0to2$value)
+trainedDifferenceScoreTest0to2
+cohensD(x = diffScoreTrainedData0to2$value)
+reproCheck(reportedValue = '2.59', obtainedValue = 2.588, valueType = 't')
+reproCheck(reportedValue = '.021', obtainedValue = 0.02059, valueType = 'p')
+reproCheck(reportedValue = '0.65', obtainedValue = 0.6469889, valueType = 'd')
+reproCheck(reportedValue = '0.04', obtainedValue = 0.0430738, valueType = 'ci')
+reproCheck(reportedValue = '0.45', obtainedValue = 0.4453012, valueType = 'ci')
+
+# "0–3 s: t(15) = 2.84, p = .012, d = 0.71, 95% CI = [0.06, 0.43]"
+trainedDifferenceScoreTest0to3 <- t.test(diffScoreTrainedData0to3$value)
+trainedDifferenceScoreTest0to3
+cohensD(x = diffScoreTrainedData0to3$value)
+# compareValues(reportedValue = 0.43, obtainedValue = 0.439) #incorrect upper CI
+reproCheck(reportedValue = '2.84', obtainedValue = 2.8388, valueType = 't')
+reproCheck(reportedValue = '.012', obtainedValue = 0.01245, valueType = 'p')
+reproCheck(reportedValue = '0.71', obtainedValue = 0.7096979, valueType = 'd')
+reproCheck(reportedValue = '0.06', obtainedValue = 0.06254171, valueType = 'ci')
+reproCheck(reportedValue = '0.43', obtainedValue = 0.43945829, valueType = 'ci') #incorrect upper CI
+```
+
+###7) Untrained Condition Difference Score One Sample T-Test
+> The same analysis did not reveal a significant difference from zero in the untrained-word condition, an initial tendency to look longer at the target was observed—0–1 s: t(15) = 1.91, p = .075, d = 0.48, 95% CI = [–0.76, 0.04]; 0–2 s: t(15) = 0.93, p = .368, d = 0.23, 95% CI = [–0.43, 0.17]; 0–3 s: t(15) = 0.29, p = .774, d = 0.07, 95% CI = [–0.26, 0.20]. (from Yin & Csibra p. 5)
+
+```{r}
+# "0–1 s: t(15) = 1.91, p = .075, d = 0.48, 95% CI = [–0.76, 0.04]"
+untrainedDifferenceScoreTest0to1 <- t.test(diffScoreUntrainedData0to1$value)
+untrainedDifferenceScoreTest0to1
+cohensD(x = diffScoreUntrainedData0to1$value)
+reproCheck(reportedValue = '1.91', obtainedValue = -1.9106, valueType = 't')
+reproCheck(reportedValue = '.075', obtainedValue = 0.07536, valueType = 'p')
+reproCheck(reportedValue = '0.48', obtainedValue = 0.4776539, valueType = 'd')
+reproCheck(reportedValue = '-0.76', obtainedValue = -0.7561886, valueType = 'ci')
+reproCheck(reportedValue = '0.04', obtainedValue = 0.0413136, valueType = 'ci')
+
+# "0–2 s: t(15) = 0.93, p = .368, d = 0.23, 95% CI = [–0.43, 0.17]"
+untrainedDifferenceScoreTest0to2 <- t.test(diffScoreUntrainedData0to2$value)
+untrainedDifferenceScoreTest0to2
+cohensD(x = diffScoreUntrainedData0to2$value)
+reproCheck(reportedValue = '0.93', obtainedValue = -0.92737, valueType = 't') #missing negative sign
+reproCheck(reportedValue = '.368', obtainedValue = 0.3684, valueType = 'p')
+reproCheck(reportedValue = '0.23', obtainedValue = 0.2318419, valueType = 'd')
+reproCheck(reportedValue = '-0.43', obtainedValue = -0.4292026, valueType = 'ci')
+reproCheck(reportedValue = '0.17', obtainedValue = 0.1689526, valueType = 'ci')
+
+# "0–3 s: t(15) = 0.29, p = .774, d = 0.07, 95% CI = [–0.26, 0.20]"
+untrainedDifferenceScoreTest0to3 <- t.test(diffScoreUntrainedData0to3$value)
+untrainedDifferenceScoreTest0to3
+cohensD(x = diffScoreUntrainedData0to3$value)
+reproCheck(reportedValue = '0.29', obtainedValue = -0.29255, valueType = 't') #missing negative sign
+reproCheck(reportedValue = '.774', obtainedValue = 0.7739, valueType = 'p')
+reproCheck(reportedValue = '0.07', obtainedValue = 0.07313838, valueType = 'd')
+reproCheck(reportedValue = '-0.26', obtainedValue = -0.2609987, valueType = 'ci')
+reproCheck(reportedValue = '0.20', obtainedValue = 0.1979987, valueType = 'ci')
+```
+
+# Step 5: Conclusion
+[Please include a text summary describing your findings. If this reproducibility check was a failure, you should note any suggestions as to what you think the likely cause(s) might be.]
+
+###1) Exposure Phase Looking Time
+INSUFFICIENT INFORMATION ERROR
+
+I was not able to reproduce the t-test of total looking time for the first exposure phase, as the dataset only includes data for the response phase. 
+
+###2) Response Phase Looking Time
+INSUFFICIENT INFORMATION ERROR
+
+While I was able to run a paired two-tailed t-test for total looking time in the 3s response phase (the test I presume the authors ran), my values did not match. They were so wildly off that I believe I am not running the same test as the authors, who do not specify which test they ran to achieve these results. Therefore, I categorize this as insufficient information, but include the code that I ran above.
+
+###3) Response Phase Interval Difference Score T-Tests
+The results of the paired two-tailed t-tests on difference score acorss conditions for the three specified time frames generally matched the reported values. However, the upper confidence interval for the t-test on difference scores for the 0-1s time frame was reported incorrectly; I believe this discrepancy is likely the result of a typo or incorrect copying of data.
+
+###4) Response Phase Interval Difference Score T-Tests with Exposure Time as Covariates
+INSUFFICIENT INFORMATION ERROR
+
+Similarly to the first test, I could not run this tests as the provided data did not include the exposure time.
+
+###5) Response Phase Difference Score Permutation T-Tests
+INSUFFICIENT INFORMATION ERROR
+
+I did not have enough information to reproduce these tests. I do not know where the specified time range came from (if it is the result of the test or if the data outsde this range is excluded before the test) or how the test was run. My attempt at replicating (code above) is commented out but included.
+
+###6) Trained Condition Difference Score One Sample T-Test
+Similarly to the reponse phase interval difference score t-tests, the results from these tests largely matched those of the reported data. However, the upper confidence interval for the 0-3s interval was rounded incorrectly in the original reported data; this error is likely the result of a typo.
+
+###7) Untrained Condition Difference Score One Sample T-Test
+The t-values for all three time intervals were reported as positive when they should have been negative. However, the written explanation of this analysis does reflect these negative values (so perhaps we shoud nto interpret them as incorrect).
+
+  
+[PILOT/COPILOT ENTER RELEVANT INFORMATION BELOW]
+
+```{r}
+Author_Assistance = FALSE # was author assistance provided? (if so, enter TRUE)
+
+Insufficient_Information_Errors <- 4 # how many discrete insufficient information issues did you encounter?
+
+# Assess the causal locus (discrete reproducibility issues) of any reproducibility errors. Note that there doesn't necessarily have to be a one-to-one correspondance between discrete reproducibility issues and reproducibility errors. For example, it could be that the original article neglects to mention that a Greenhouse-Geisser correct was applied to ANOVA outcomes. This might result in multiple reproducibility errors, but there is a single causal locus (discrete reproducibility issue).
+
+locus_typo <- 0 # how many discrete issues did you encounter that related to typographical errors?
+locus_specification <- 2 # how many discrete issues did you encounter that related to incomplete, incorrect, or unclear specification of the original analyses?
+locus_analysis <- 0 # how many discrete issues did you encounter that related to errors in the authors' original analyses?
+locus_data <- 1 # how many discrete issues did you encounter that related to errors in the data files shared by the authors?
+locus_unidentified <- 0 # how many discrete issues were there for which you could not identify the cause
+
+# How many of the above issues were resolved through author assistance?
+locus_typo_resolved <- NA # how many discrete issues did you encounter that related to typographical errors?
+locus_specification_resolved <- NA # how many discrete issues did you encounter that related to incomplete, incorrect, or unclear specification of the original analyses?
+locus_analysis_resolved <- NA # how many discrete issues did you encounter that related to errors in the authors' original analyses?
+locus_data_resolved <- NA # how many discrete issues did you encounter that related to errors in the data files shared by the authors?
+locus_unidentified_resolved <- NA # how many discrete issues were there for which you could not identify the cause
+
+Affects_Conclusion <- FALSE # Do any reproducibility issues encounter appear to affect the conclusions made in the original article? TRUE, FALSE, or NA. This is a subjective judgement, but you should taking into account multiple factors, such as the presence/absence of decision errors, the number of target outcomes that could not be reproduced, the type of outcomes that could or could not be reproduced, the difference in magnitude of effect sizes, and the predictions of the specific hypothesis under scrutiny.
+```
+
+[PILOT/COPILOT DO NOT EDIT THE CODE CHUNK BELOW]
+
+```{r}
+reportObject <- reportObject %>%
+  filter(dummyRow == FALSE) %>% # remove the dummy row
+  select(-dummyRow) %>% # remove dummy row designation
+  mutate(articleID = articleID) %>% # add variables to report 
+  select(articleID, everything()) # make articleID first column
+
+# decide on final outcome
+if(any(reportObject$comparisonOutcome %in% c("MAJOR_ERROR", "DECISION_ERROR")) | Insufficient_Information_Errors > 0){
+  finalOutcome <- "Failure without author assistance"
+  if(Author_Assistance == T){
+    finalOutcome <- "Failure despite author assistance"
+  }
+}else{
+  finalOutcome <- "Success without author assistance"
+  if(Author_Assistance == T){
+    finalOutcome <- "Success with author assistance"
+  }
+}
+
+# collate report extra details
+reportExtras <- data.frame(articleID, pilotNames, copilotNames, pilotTTC, copilotTTC, pilotStartDate, copilotStartDate, completionDate, Author_Assistance, finalOutcome, Insufficient_Information_Errors, locus_typo, locus_specification, locus_analysis, locus_data, locus_unidentified, locus_typo_resolved, locus_specification_resolved, locus_analysis_resolved, locus_data_resolved, locus_unidentified_resolved)
+
+# save report objects
+if(reportType == "pilot"){
+  write_csv(reportObject, "pilotReportDetailed.csv")
+  write_csv(reportExtras, "pilotReportExtras.csv")
+}
+
+if(reportType == "final"){
+  write_csv(reportObject, "finalReportDetailed.csv")
+  write_csv(reportExtras, "finalReportExtras.csv")
+}
+```
+
+# Session information
+
+[This function will output information about the package versions used in this report:]
+
+```{r session_info, include=TRUE, echo=TRUE, results='markup'}
+devtools::session_info()
+```
